@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div><AddNote /></div>
-    <div>Display notes section</div>
+    <div>{{ getNotes }}</div>
   </div>
 </template>
 
@@ -12,6 +12,11 @@ export default {
   name: 'Notes',
   components: {
     AddNote,
+  },
+  computed: {
+    getNotes() {
+      return this.$store.state.notes.list;
+    },
   },
 };
 </script>
