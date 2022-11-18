@@ -1,6 +1,10 @@
 <template>
   <div class="add-note">
-    <v-text-field :placeholder="placeholder" v-model="text"></v-text-field>
+    <v-text-field
+      :placeholder="placeholder"
+      v-model="text"
+      @keyup.enter="addNote"
+    ></v-text-field>
     <v-btn color="primary" dark @click="addNote"> Add </v-btn>
   </div>
 </template>
@@ -17,10 +21,10 @@ export default {
   methods: {
     addNote() {
       this.$store.commit('notes/add', {
-        text: this.note,
+        text: this.text,
         timestamp: new Date().getTime(),
       });
-      this.note = '';
+      this.text = '';
     },
   },
 };

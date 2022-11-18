@@ -9,10 +9,11 @@ export const getters = {
 };
 
 export const mutations = {
-  add(state, { note }) {
+  add(state, note) {
     state.list.push(note);
   },
-  remove(state, { note }) {
-    state.list.splice(state.list.indexOf(note), 1);
+  remove(state, note) {
+    const index = state.list.findIndex((x) => x.timestamp === note.timestamp);
+    state.list.splice(index, 1);
   },
 };

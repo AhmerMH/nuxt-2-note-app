@@ -1,20 +1,33 @@
 <template>
   <div class="container">
     <div><AddNote /></div>
-    <div>{{ getNotes }}</div>
+    <div 
+      v-if="allNotes.length !== 0" 
+      v-for="note in allNotes" 
+      :key="note.timestamp">
+      <Note 
+        :text="note.text"
+        :timestamp="note.timestamp" 
+        
+        />
+    </div>
+
+    </div>
   </div>
 </template>
 
 <script>
 import AddNote from './add-note';
+import Note from './note';
 
 export default {
   name: 'Notes',
   components: {
     AddNote,
+    Note
   },
   computed: {
-    getNotes() {
+    allNotes() {
       return this.$store.state.notes.list;
     },
   },
